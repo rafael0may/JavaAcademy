@@ -1,0 +1,75 @@
+seleccione las ordenes que tengan status delivered y que el order amount se mayor a 1000 y entregar resultado de mayor a menor en la columna order_id;
+
+select order_id
+,date_format(order_date, '%Y-%m-%day) AS order_date
+,date_format (schedule_date,'%Y-%m-%day) as schedule_date
+,,date_format (delivery_date,'%Y-%m-%day) as delivery_date
+,datediff(schedule_date,delivery_date) as delivery <=0, 'Y', 'N') as ontime_delivery
+for orders;
+where status_id in (2300,2350)
+and order_date
+
+
+
+select ship_to_id, count(cart_id) as carts from cart
+
+select ship_to_id, count(cart_id) as carts from cart group by ship_to_id;
+
+
+seleccione las ordenes que tengan status delivered y que el order amount se mayor a 1000 y entregar resultado de mayor a menor en la columna order_id;
+
+select cat.item_id,(select description from item where item_id=cat.item_id) as description,cat.category_id,(select description from category = cat.category_id) as category_description from category_item as cat where cat.category_id = 6;
+
+INNER JOIN
+select i.item_id, i.description,c.category_id,c.description
+from category_item as cat
+inner join category as c on c.category_id = cat.category_id
+inner join item as i on i.item_id =cat.item_id
+where cat.category_id=6;
+
+select u.username, u.name, u.user_role_id, ur.description from user as u join user_role as ur on u.user_role_id = ur.user_role_id;
+
+select u.username, u.name, u.user_role_id, ur.description from user as u right join user_role as ur on u.user_role_id = ur.user_role_id
+where u.user_role_id is null;
+
+select 
+u.username,  
+u.name user, 
+ur.user_role_id, 
+ur.description user_role, 
+st.ship_to_id, 
+st.name ship_to,
+st.address,
+st.city_id,
+ci.description
+from user u
+inner join user_role as ur on u.user_role_id=ur.user_role_id
+inner join ship_to st on u.username = st.user
+inner join city as ci on st.city_id = ci.city_id;
+
+select
+c.cart_id,
+c.create_date,
+s.description cart_status,
+o.order_id
+from cart as c
+inner join status as s on c.status_id = s.status_id
+left join orders as o on c.cart_id = o.cart_id
+where date_format(c.create_date, '%Y') = "2015"
+order by cart_id;
+
+select
+s.*,
+count(c.city_id) cities
+from city c
+right join state s on c.state_id = s.state_id
+group by s.state_id
+order by cities, s.state_id;
+
+select 
+s.state_id,
+s.description
+from city c
+right join state s on  s.state_id = c.state_id
+where c.state_id is null;
+
